@@ -17,3 +17,6 @@ git add .
 git commit -m "message"
 
 git push (with login)
+
+Trinket exercise comepleted following link;
+https://trinket.io/python/5dee2c2c4b
