@@ -20,3 +20,16 @@ Curly braces define dictionaries (key: value) pairs
 All these can be placed within each other
 
 """ doc string """ (triple quotes)
+
+Exercise 0
+
+name.upper() --> creates an upper case of the string
+
+convert integer to string by str(number)
+
+to add text simply place + 'text'
+
+
+
+
+
