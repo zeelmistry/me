@@ -12,9 +12,10 @@ def loop_ranger(start, stop=None, step=1):
     The look up the docs for range(), you can answer this with just the range 
     function, but we'd like you to do it the long way, probably using a loop.
     """
-    numbers= []
-    for i in (start, stop, step):
-        numbers.append(i)
+    numbers = []
+    while start < stop:
+        numbers.append(int(start))
+        start = (start+step)
     return numbers
 
 
@@ -23,7 +24,11 @@ def lone_ranger(start, stop, step):
 
     Look up the docs for range() and wrap it in a 1:1 way
     """
-    return None
+    numbers = []
+    while start < stop:
+        numbers.append(int(start))
+        start = (start+step)
+    return numbers
 
 
 def two_step_ranger(start, stop):
@@ -32,7 +37,12 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
-    return None
+    numbers = []
+    step = 2
+    while start < stop:
+        numbers.append(int(start))
+        start = (start+step)
+    return numbers
 
 
 def stubborn_asker(low, high):
@@ -43,7 +53,21 @@ def stubborn_asker(low, high):
 
     Look up the docs for input
     """
-    return None
+    
+    
+    guessed = False
+
+    while not guessed:
+        guessedNumber = int(input("Guess a number: "))
+        print("You guessed {},".format(guessedNumber),)
+        if guessedNumber > low and guessedNumber < high :
+            print("You got it!")
+            guessed = True
+        elif guessedNumber < low:
+            print("Too small, try again :'(")
+        elif guessedNumber > high:
+            print("Too big, try again :'(")
+    return guessedNumber
 
 
 def not_number_rejector(message):
@@ -53,7 +77,17 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    return None
+    guessed = False
+
+    while not guessed:
+        guessedNumber = (input("Guess a number: "))
+        print("You guessed {},".format(guessedNumber),)
+        if guessedNumber.isdigit():
+            print("You got it!")
+            guessed = True
+        else:
+            print("Not a number try again")
+    return guessedNumber
 
 
 def super_asker(low, high):
