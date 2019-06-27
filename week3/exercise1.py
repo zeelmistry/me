@@ -80,14 +80,14 @@ def not_number_rejector(message):
     guessed = False
 
     while not guessed:
-        guessedNumber = (input("Guess a number: "))
+        guessedNumber = str(input("Guess a number: "))
         print("You guessed {},".format(guessedNumber),)
         if guessedNumber.isdigit():
             print("You got it!")
             guessed = True
         else:
             print("Not a number try again")
-    return guessedNumber
+    return int(guessedNumber)
 
 
 def super_asker(low, high):
@@ -98,7 +98,12 @@ def super_asker(low, high):
     Try to call at least one of the other functions to minimise the
     amount of code.
     """
-    return None
+    while True:
+        answer = not_number_rejector("Give me a number!")
+        if low <= answer <= high:
+            return answer
+        else:
+            print("It isnt in the range")
 
 
 if __name__ == "__main__":
