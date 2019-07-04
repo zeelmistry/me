@@ -80,14 +80,13 @@ def not_number_rejector(message):
     guessed = False
 
     while not guessed:
-        guessedNumber = str(input("Guess a number: "))
-        print("You guessed {},".format(guessedNumber),)
+        guessedNumber = str(input(message))
         if guessedNumber.isdigit():
-            print("You got it!")
+            return int(guessedNumber)
             guessed = True
         else:
             print("Not a number try again")
-    return int(guessedNumber)
+    
 
 
 def super_asker(low, high):

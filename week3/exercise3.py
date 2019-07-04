@@ -5,6 +5,23 @@ Steps on the way to making your own guessing game.
 
 import random
 
+def not_number_rejector(message):
+    """Ask for a number repeatedly until actually given one.
+
+    Ask for a number, and if the response is actually NOT a number 
+    (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
+    When you do get a number, return it.
+    """
+    guessed = False
+
+    while not guessed:
+        guessedNumber = str(input(message))
+        print("You guessed {},".format(guessedNumber),)
+        if guessedNumber.isdigit():
+            guessed = True
+        else:
+            print("Not a number try again")
+    return int(guessedNumber)
 
 def advancedGuessingGame():
     """Play a guessing game with a user.
@@ -26,30 +43,27 @@ def advancedGuessingGame():
     purpose if you can!
     """
     print("\nWelcome to the guessing game!")
-    print("A number between _ and _ ?")
-    
-    guessedlowerbound = False
+    print("Choose a number between _ and _ ?")
+
+    """guessedlowerbound = False
     
     while not guessedlowerbound:
         lowerBound = input("Enter a lower bound: ")
         if lowerBound.isdigit():
             print("Great")
             guessedlowerbound = True
-        else:
-            print("Not a number try again")
+            print("Not a number try again")"""
     
+    lowerBound = not_number_rejector("Give me a lower bound: ")
 
-    guessedupperbound = False
-    
-    while not guessedupperbound:
-        upperBound = input("Enter a lower bound: ")
-        if upperBound.isdigit():
-            print("Great")
-            guessedupperbound = True
+    greaterthan = False
+
+    while not greaterthan:
+        upperBound = not_number_rejector("Give me a upper bound: ")
+        if upperBound > lowerBound:
+            greaterthan = True
         else:
-            print("Not a number try again")
-    return int(upperBound)
-    
+            print("This is less than your lower bound, try again")
 
     print("OK then, pick a number between {}".format(lowerBound)) 
     print("and {}".format(upperBound))
@@ -57,20 +71,27 @@ def advancedGuessingGame():
     upperBound = int(upperBound)
 
     actualNumber = random.randint(lowerBound, upperBound)
-
+    
     guessed = False
+    number2 = False
 
     while not guessed:
-        guessedNumber = int(input("Guess a number: "))
+        guessedNumber = not_number_rejector("Guess a number: ")
         print("You guessed {},".format(guessedNumber),)
-        if guessedNumber == actualNumber:
-            print("You got it!! It was {}".format(actualNumber))
-            guessed = True
-        elif guessedNumber < actualNumber:
-            print("Too small, try again :'(")
+        if guessedNumber < lowerBound:
+            print("thats lower than the lower bound!")
+        elif guessedNumber > upperBound:
+            print("thats higher than the upper bound!")
         else:
-            print("Too big, try again :'(")
+            if guessedNumber == actualNumber:
+                print("It was {}".format(actualNumber))
+                guessed = True
+            elif guessedNumber < actualNumber:
+                print("Too small, try again :'(")
+            else:
+                print("Too big, try again :'(")
     return "You got it!"
+
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
 
