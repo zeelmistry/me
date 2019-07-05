@@ -1,5 +1,5 @@
 TODO: Reflect on what you learned this week and what is still unclear.
-LECTURE:
+WEEK 4
 #dictionary
 my_dict = {"key":"value"}
 
@@ -13,3 +13,5 @@ my_dict["degrees"] = {"something":"0", "wow":"2"}
 to return 2 do this --->  my_dict["degrees"]["wow"] = 2
 
 If theres a list in the dictionary use [1] the number doesnt matter choose from 0-(number of items in list-1) depending on which item you want from the list
+
+-----black out occured no class anymore ------

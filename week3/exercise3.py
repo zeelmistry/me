@@ -43,16 +43,7 @@ def advancedGuessingGame():
     purpose if you can!
     """
     print("\nWelcome to the guessing game!")
-    print("Choose a number between _ and _ ?")
-
-    """guessedlowerbound = False
-    
-    while not guessedlowerbound:
-        lowerBound = input("Enter a lower bound: ")
-        if lowerBound.isdigit():
-            print("Great")
-            guessedlowerbound = True
-            print("Not a number try again")"""
+    print("Choose a number between _ and _ ?") 
     
     lowerBound = not_number_rejector("Give me a lower bound: ")
 
@@ -87,9 +78,9 @@ def advancedGuessingGame():
                 print("It was {}".format(actualNumber))
                 guessed = True
             elif guessedNumber < actualNumber:
-                print("Too small, try again :'(")
+                print("Too small, try again")
             else:
-                print("Too big, try again :'(")
+                print("Too big, try again")
     return "You got it!"
 
     # the tests are looking for the exact string "You got it!". Don't modify that!
