@@ -34,10 +34,14 @@ def get_some_details():
          dictionaries.
     """
     json_data = open(LOCAL + "/lazyduck.json").read()
-
     data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
 
+    lastname = data["results"][0]["name"]["last"]
+    password1 = data["results"][0]["login"]["password"]
+    addition = int(data["results"][0]["location"]["postcode"])+ int(data["results"][0]["id"]["value"])
+    
+    return {"lastName":lastname, "password":password1, "postcodePlusID":addition }
+    
 
 def wordy_pyramid():
     """Make a pyramid out of real words.
@@ -93,11 +97,19 @@ def pokedex(low=1, high=5):
     """
     template = "https://pokeapi.co/api/v2/pokemon/{id}"
 
-    url = template.format(base=template, id=5)
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
-    return {"name": None, "weight": None, "height": None}
+    height=0
+    for i in range(low, high):
+        url = template.format(base=template, id=i)
+        r = requests.get(url)
+        if r.status_code is 200:
+            the_json = json.loads(r.text)
+            heightest = the_json["height"]
+            if heightest > height:
+                height = heightest
+                name1 = the_json["name"]
+                weight1 = the_json["weight"]
+                height1 = the_json["height"]
+    return {"name": name1, "weight": weight1, "height": height1}
 
 
 def diarist():
