@@ -20,16 +20,7 @@ you'll need to figure out for yourself what to do.
 # much better job of what it's trying to do. Once you've has a little look,
 # move on, and eventually delete this function. (And this comment!)
 def do_bunch_of_bad_things():
-    print("Getting ready to start in 9")
-    print("Getting ready to start in 8")
-    print("Getting ready to start in 7")
-    print("Getting ready to start in 6")
-    print("Getting ready to start in 5")
-    print("Getting ready to start in 4")
-    print("Getting ready to start in 3")
-    print("Getting ready to start in 2")
-    print("Getting ready to start in 1")
-    print("Let's go!")
+    countdown("Getting ready to start in", 9, 1, "Let's go!")
 
     triangle = {"base": 3, "height": 4}
     triangle["hypotenuse"] = triangle["base"] ** 2 + triangle["height"] ** 2
@@ -49,7 +40,17 @@ def do_bunch_of_bad_things():
 # return a list of countdown messages, much like in the bad function above.
 # It should say something different in the last message.
 def countdown(message, start, stop, completion_message):
-    pass
+    print("Getting ready to start in 9")
+    print("Getting ready to start in 8")
+    print("Getting ready to start in 7")
+    print("Getting ready to start in 6")
+    print("Getting ready to start in 5")
+    print("Getting ready to start in 4")
+    print("Getting ready to start in 3")
+    print("Getting ready to start in 2")
+    print("Getting ready to start in 1")
+    print("Let's go!")
+
 
 
 # TRIANGLES
@@ -62,11 +63,12 @@ def countdown(message, start, stop, completion_message):
 # The stub functions are made for you, and each one is tested, so this should
 # hand hold quite nicely.
 def calculate_hypotenuse(base, height):
-    pass
+    triangle["hypotenuse"] = triangle["base"] ** 2 + triangle["height"] ** 2
+    print("hypotenuse: {}".format(triangle["hypotenuse"]))
 
 
 def calculate_area(base, height):
-    pass
+    print("area = " + str((triangle["base"] * triangle["height"]) / 2))
 
 
 def calculate_perimeter(base, height):
