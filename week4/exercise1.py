@@ -78,7 +78,38 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &minLength=
     """
-    pass
+    keyapi= "sdh4sui995ynvjyf2zgepz84njj91vzo6p4q5g7rwj8z9lxsz"
+    url = (
+        "http://api.wordnik.com/v4/words.json/randomWords?api_key={key}"
+        "&minLength={min}"
+        "&maxLength={max}"
+        "&limit=1"
+    )
+    minimum = 3
+    maximum = 20
+    length = minimum
+    wordlist = []
+    temporarylist =[]
+    temporarylist2 =[]
+    while length <= maximum:
+        theurl=url.format(key=keyapi, min=length, max=length)
+        pulling = requests.get(theurl)   
+        if pulling.status_code is 200:         
+            randomword = json.loads(pulling.text)            
+            if randomword[0]["word"] is None:
+                pass
+            else:
+                temporarylist.append(randomword[0]["word"])
+                temporarylist2.append(randomword[0]["word"])
+                length += 2    
+    for i in range(len(temporarylist)):
+        wordlist.append(temporarylist[i])
+    temporarylist2.reverse()
+    for i in range(1,len(temporarylist2)):
+        wordlist.append(temporarylist2[i])
+    return(wordlist)
+
+
 
 
 def pokedex(low=1, high=5):
@@ -126,7 +157,18 @@ def diarist():
          the test will have nothing to look at.
     TIP: this might come in handy if you need to hack a 3d print file in the future.
     """
-    pass
+    gdata = open(LOCAL + "/Trispokedovetiles(laser).gcode").readlines()
+    amount = 0
+    for theline in gdata:
+        print(theline)
+        if "M10 P1" in theline:
+            amount += 1
+    f = open("lasers.pew", "w")
+    f.write(str(amount))
+    f.close
+    
+    
+
 
 
 if __name__ == "__main__":

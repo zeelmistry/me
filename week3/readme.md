@@ -14,4 +14,5 @@ Started working but was easier to place not number rejector as a function and ca
 Needed to 'chastise' for choosing outside of bounds which wasn't thought of earlier. Hence I needed to create an extra code for outside of boundaries. 
 
 Exercise4 started by looking online about binary searches. Not sure what to do ahead of this. 
-
+Was able to understand how to narrow down the numbers for the computer to search for the code. 
+Needed to make 3 separate parts for the number to come down to. 
