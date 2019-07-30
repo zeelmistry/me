@@ -10,8 +10,12 @@ Exercise 1:
 
 Moved getting ready to start repetition from the defined do bunch of bad things to the actual function. This allows us to call it instead making it more comprehendable. 
 
+Had to create a range loop for the countdown message.
+
 The triangle exercises were relatively easy as they involved basic algebra.
 Needed help with aspect however, as wasnt sure how to do it. 
 
 Wordnik was proving to be difficult and the problems of accessing arose. 
 
+Got some help with exercise 2 and completed it using some online koch commands to create the tracing. 
+Creating the guard was quite difficult and saw some other codes to help with creating it. 

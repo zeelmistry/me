@@ -99,16 +99,24 @@ def abba(source="abba", guard=3):
         Hint: when guard == -1 return the letter.
         """
         if letter == "a":
-            return "a"
+            return "bba"
         elif letter == "b":
-            return "b"
+            return "aob"
         elif letter == "o":
-            return "o"
+            return "oa"
         else:
             return letter
 
-    # write the rest of the function here
-    pass
+    join = list(source)
+    results=[]
+    for j in join:
+        results.append(apply_rules(j, guard))
+    newabba = "".join(results) 
+    guard -= 1
+    if guard > 0:
+        return abba(newabba, guard)
+    else:
+        return newabba
 
 
 def koch(t, order, size):
@@ -152,10 +160,19 @@ def square_koch(t, order, size):
 
     """
     trace = ""
-    # write the rest of the function here.
+    if order == 0:        
+        t.forward(size)
+    else:
+        trace += square_koch(t, order-1, size/3)   
+        t.left(90)
+        trace += square_koch(t, order-1, size/3)
+        t.right(90)
+        trace += square_koch(t, order-1, size/3)
+        t.right(90)
+        trace += square_koch(t, order-1, size/3)
+        t.left(90)
+        trace += square_koch(t, order-1, size/3)
     return str(order) + trace
-    pass
-
 
 def draw_square(steps=4):
     """Helper function to make testing easier."""

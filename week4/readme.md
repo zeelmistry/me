@@ -25,3 +25,6 @@ The diarist exercise was completed with the help of a tutor. The code makes sens
 -> ultimatley it opens the file and defines a certain amount as 0. This then counts the specific line and everytime it does it adds to the amount. This then creates a file with the string amount. 
 
 Wordnik Api came in however there is another issue around the amount of students that can use the code. 
+
+Laser.pew file is not being created. Not sure why thats the case.
+---> found out that the file was outside the folder. Had to move it in to complete it. 

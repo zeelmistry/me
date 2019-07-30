@@ -77,23 +77,27 @@ def wordy_pyramid():
     "Leto",
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &minLength=
-    """
+    
     keyapi= "sdh4sui995ynvjyf2zgepz84njj91vzo6p4q5g7rwj8z9lxsz"
     url = (
         "http://api.wordnik.com/v4/words.json/randomWords?api_key={key}"
         "&minLength={min}"
         "&maxLength={max}"
         "&limit=1"
+    )"""
+
+    baseURL = (
+        "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}"
     )
     minimum = 3
     maximum = 20
-    length = minimum
+    lengthy = minimum
     wordlist = []
     temporarylist =[]
     temporarylist2 =[]
-    while length <= maximum:
-        theurl=url.format(key=keyapi, min=length, max=length)
-        pulling = requests.get(theurl)   
+    while lengthy <= maximum:
+        url=baseURL.format(length = lengthy)
+        pulling = requests.get(url)   
         if pulling.status_code is 200:         
             randomword = json.loads(pulling.text)            
             if randomword[0]["word"] is None:
@@ -101,7 +105,7 @@ def wordy_pyramid():
             else:
                 temporarylist.append(randomword[0]["word"])
                 temporarylist2.append(randomword[0]["word"])
-                length += 2    
+                lengthy += 2    
     for i in range(len(temporarylist)):
         wordlist.append(temporarylist[i])
     temporarylist2.reverse()
