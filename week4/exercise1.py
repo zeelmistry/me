@@ -86,32 +86,29 @@ def wordy_pyramid():
         "&limit=1"
     )"""
 
-    baseURL = (
-        "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}"
-    )
+    url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={len}"
     minimum = 3
     maximum = 20
-    lengthy = minimum
     wordlist = []
-    temporarylist =[]
-    temporarylist2 =[]
-    while lengthy <= maximum:
-        url=baseURL.format(length = lengthy)
-        pulling = requests.get(url)   
-        if pulling.status_code is 200:         
-            randomword = json.loads(pulling.text)            
-            if randomword[0]["word"] is None:
+    templist =[]
+    templist2 =[]
+    for i in range(minimum,maximum+1):
+        fullurl=url.format(len=i)
+        pull = requests.get(fullurl)   
+        if pull.status_code is 200:         
+            randword = pull.content  
+            if randword is None: 
                 pass
             else:
-                temporarylist.append(randomword[0]["word"])
-                temporarylist2.append(randomword[0]["word"])
-                lengthy += 2    
-    for i in range(len(temporarylist)):
-        wordlist.append(temporarylist[i])
-    temporarylist2.reverse()
-    for i in range(1,len(temporarylist2)):
-        wordlist.append(temporarylist2[i])
-    return(wordlist)
+                randword = str(randword)
+                if int(i) % 2 ==0:
+                    templist2.append(randword[2:len(randword)-1])
+                else:
+                    templist.append(randword[2:len(randword)-1])
+    templist2.reverse()
+    wordlist.extend(templist)
+    wordlist.extend(templist2)
+    return wordlist
 
 
 
