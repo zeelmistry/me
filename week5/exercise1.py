@@ -148,7 +148,7 @@ def triangle_master(base, height, return_diagram=False, return_dictionary=False)
 
 
 def wordy_pyramid(api_key):
-    import requests
+    """import requests
 
     baseURL = (
         "http://api.wordnik.com/v4/words.json/randomWords?"
@@ -174,7 +174,32 @@ def wordy_pyramid(api_key):
             pyramid_list.append(message)
         else:
             print("failed a request", r.status_code, i)
-    return pyramid_list
+    return pyramid_list"""
+
+    import requests
+    url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={len}"
+    mino = 3
+    maxo = 20
+    wordlist = []
+    templist =[]
+    templist2 =[]
+    for i in range(mino,maxo+1):
+        fullurl=url.format(len=i)
+        pull = requests.get(fullurl)   
+        if pull.status_code is 200:         
+            randword = pull.content  
+            if randword is None: 
+                pass
+            else:
+                randword = str(randword)
+                if int(i) % 2 ==0:
+                    templist2.append(randword[2:len(randword)-1])
+                else:
+                    templist.append(randword[2:len(randword)-1])
+    templist2.reverse()
+    wordlist.extend(templist)
+    wordlist.extend(templist2)
+    return wordlist
 
 
 def get_a_word_of_length_n(length):
