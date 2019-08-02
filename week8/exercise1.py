@@ -198,7 +198,7 @@ def fast_filler(number_of_words=200):
     if os.path.isfile('dict_racey.json'):
         print('loading from file')
     else:
-        f= open("week8/dict_racey.json","w")
+        f= open("dict_racey.json","w")
         dumping = json.dumps(dictionarything)
         f.write(dumping)
         f.close
