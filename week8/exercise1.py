@@ -162,14 +162,16 @@ def random_filler_text(number_of_words=200):
         see line 77 of week4/hangman_leadboard.py for an example.
     """
     import random
-    for i in number_of_words:
-        randomlength = random.choice(list(make_filler_text_dictionary()))
-        for j in randomlength:
-            
+    lister = make_filler_text_dictionary()
+    stringpara = []
+    for i in range(0, number_of_words):
+        keyer = random.randint(3,7)
+        worder = random.randint(0,2)
+        stringpara.append(lister[keyer][worder])
+    return(' '.join(stringpara))
 
 
 
-    return ""
 
 
 def fast_filler(number_of_words=200):
